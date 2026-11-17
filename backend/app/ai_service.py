@@ -21,7 +21,7 @@ class GeminiError(Exception):
 
 
 def model_name() -> str:
-    return os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    return os.getenv("GEMINI_MODEL", "gemini-flash-lite-latest")
 
 
 def mode() -> str:
