@@ -46,7 +46,19 @@ Respond with ONLY a JSON object having exactly these keys:
   "campaign_direction": "Creative angle or thematic hook"
 }}
 """
-    data = generate_json(prompt)
+    try:
+        data = generate_json(prompt)
+    except Exception as exc:
+        print(f"[strategy_agent warning] LLM call failed ({exc}); generating contextual strategy.")
+        data = {
+            "campaign_goal": f"Successfully scale {inp.product} to achieve '{inp.objective}'",
+            "core_message": f"Experience the simplicity and value of {inp.product} designed for {inp.audience}.",
+            "content_pillars": [f"{inp.product} Essentials", f"{inp.audience} Lifestyle", "Instant Access"],
+            "messaging_approach": inp.tone,
+            "call_to_action": "Get started today",
+            "campaign_direction": f"Emphasize convenience, quality, and direct benefits of {inp.product}.",
+        }
+
     strategy = Strategy(
         campaign_goal=data.get("campaign_goal", f"Promote {inp.product}"),
         core_message=data.get("core_message", inp.objective),
@@ -89,7 +101,40 @@ Return ONLY a JSON object with:
   "call_to_action": "{strategy.call_to_action}"
 }}
 """
-    data = generate_json(prompt)
+    try:
+        data = generate_json(prompt)
+    except Exception as exc:
+        print(f"[content_agent warning] LLM call failed for {platform} ({exc}); generating contextual copy.")
+        tag_base = re.sub(r"[^a-zA-Z0-9]", "", inp.product.split()[0]) if inp.product else "Fresh"
+        if platform == "instagram":
+            data = {
+                "headline": f"Introducing {inp.product}! ✨",
+                "body": f"Ready to upgrade how you experience {inp.product}?\n\n{strategy.core_message}\n\nDesigned specifically for {inp.audience} who value quality and effortless convenience.\n\n👉 {strategy.call_to_action}",
+                "hashtags": [f"#{tag_base}", "#FreshChoice", "#DailyUpgrade", "#GoodVibes"],
+                "call_to_action": strategy.call_to_action,
+            }
+        elif platform == "linkedin":
+            data = {
+                "headline": f"Why we are rethinking {inp.product}",
+                "body": f"In a fast-paced environment, {inp.audience} shouldn't have to compromise on reliability.\n\nKey takeaway: {strategy.core_message}.\n\nWe built {inp.product} to deliver consistent, dependable outcomes every single day.\n\nLearn more: {strategy.call_to_action}",
+                "hashtags": ["#Productivity", "#Leadership", "#QualityFirst"],
+                "call_to_action": strategy.call_to_action,
+            }
+        elif platform == "twitter":
+            data = {
+                "headline": "",
+                "body": f"Tired of compromises? {inp.product} is here to solve that.\n\n{strategy.core_message}\n\n👉 {strategy.call_to_action}",
+                "hashtags": [f"#{tag_base}", "#MustTry"],
+                "call_to_action": strategy.call_to_action,
+            }
+        else:
+            data = {
+                "headline": f"Meet {inp.product}!",
+                "body": f"Hey everyone! Check out {inp.product}.\n\n{strategy.core_message}\n\nClick below to get started today!",
+                "hashtags": [f"#{tag_base}", "#Community"],
+                "call_to_action": strategy.call_to_action,
+            }
+
     raw_tags = data.get("hashtags", [])
     if isinstance(raw_tags, str):
         raw_tags = raw_tags.split()
