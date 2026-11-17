@@ -63,7 +63,19 @@ app.add_middleware(
 )
 
 
-# ── Health ──────────────────────────────────────────────────────────
+# ── Root & Health ───────────────────────────────────────────────────
+@app.get("/")
+async def root():
+    return {
+        "service": "Campaign.AI Backend API",
+        "status": "online",
+        "version": app.version,
+        "docs_url": "/docs",
+        "health_url": "/health",
+        "model": ai_service.model_name(),
+    }
+
+
 @app.get("/health")
 async def health():
     return {
