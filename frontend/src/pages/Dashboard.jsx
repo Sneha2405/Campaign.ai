@@ -40,7 +40,7 @@ export default function Dashboard({ notify }) {
       {items && items.length === 0 && (
         <div className="empty">
           <h3>No campaigns yet</h3>
-          <p>Campaigns live in memory in Phase 1, so they reset when the backend restarts.</p>
+          <p>No campaigns found in this environment. Click below to launch your first campaign!</p>
           <Link to="/new" className="btn">Create the first one</Link>
         </div>
       )}
