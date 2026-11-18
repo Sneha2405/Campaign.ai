@@ -2,24 +2,61 @@ import React, { useState, useMemo } from 'react'
 
 const tagLine = (tags) => (tags || []).map((t) => (t.startsWith('#') ? t : `#${t}`)).join(' ')
 
-function getCuratedImage(product = '', brand = '') {
+const CURATED_SETS = {
+  food: [
+    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80', // Fresh colorful meal bowl
+    'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80', // Healthy salad lunchbox
+    'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80', // Gourmet office meal
+    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80', // Delicious food spread
+  ],
+  coffee: [
+    'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80', // Warm chai/coffee
+    'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80', // Cafe latte art
+    'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80', // Steaming cup in cafe
+  ],
+  fitness: [
+    'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80', // Gym workout
+    'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80', // Fitness athlete
+    'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80', // Weights & training
+  ],
+  tech: [
+    'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80', // Tech team & laptops
+    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80', // Analytics & modern UI
+    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80', // Dashboard graph
+  ],
+  fashion: [
+    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80', // Modern apparel
+    'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80', // Streetwear style
+  ],
+  general: [
+    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80',
+  ]
+}
+
+function getCuratedSet(product = '', brand = '') {
   const text = `${product} ${brand}`.toLowerCase()
-  if (text.includes('fit') || text.includes('gym') || text.includes('health') || text.includes('workout')) {
-    return 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80'
+  // 1. Food, Lunch, Meal prep, Dining (Check food FIRST before fitness!)
+  if (text.includes('meal') || text.includes('lunch') || text.includes('food') || text.includes('dish') || text.includes('salad') || text.includes('cook') || text.includes('kitchen') || text.includes('tiffin') || text.includes('snack') || text.includes('diet') || text.includes('fresh')) {
+    return CURATED_SETS.food
   }
-  if (text.includes('chai') || text.includes('tea') || text.includes('coffee') || text.includes('cafe')) {
-    return 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80'
+  // 2. Chai, Tea, Coffee, Beverages
+  if (text.includes('chai') || text.includes('tea') || text.includes('coffee') || text.includes('cafe') || text.includes('drink') || text.includes('brew')) {
+    return CURATED_SETS.coffee
   }
-  if (text.includes('food') || text.includes('meal') || text.includes('lunch') || text.includes('diet') || text.includes('fresh')) {
-    return 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80'
+  // 3. Fitness, Gym, Workouts (Specific exercise keywords only)
+  if (text.includes('gym') || text.includes('workout') || text.includes('crossfit') || text.includes('bodybuilding') || text.includes('muscle') || text.includes('exercise') || text.includes('fitness')) {
+    return CURATED_SETS.fitness
   }
-  if (text.includes('tech') || text.includes('app') || text.includes('software') || text.includes('saas') || text.includes('ai')) {
-    return 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80'
+  // 4. Technology, SaaS, AI, Software
+  if (text.includes('tech') || text.includes('app') || text.includes('software') || text.includes('saas') || text.includes('ai') || text.includes('platform')) {
+    return CURATED_SETS.tech
   }
-  if (text.includes('cloth') || text.includes('fashion') || text.includes('wear') || text.includes('style')) {
-    return 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80'
+  // 5. Fashion, Apparel, Style
+  if (text.includes('cloth') || text.includes('fashion') || text.includes('wear') || text.includes('style') || text.includes('apparel')) {
+    return CURATED_SETS.fashion
   }
-  return 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
+  return CURATED_SETS.general
 }
 
 function Avatar({ name }) {
@@ -288,14 +325,19 @@ const MAP = { instagram: InstagramPreview, linkedin: LinkedInPreview, twitter: T
 // ── Master Preview Component with Toolbar ──────────────────────────────
 export default function Preview({ platform, content, brand, product = '', audience = '' }) {
   const [seed, setSeed] = useState(42)
+  const [photoIndex, setPhotoIndex] = useState(0)
   const [visualMode, setVisualMode] = useState('curated') // 'ai' | 'curated' | 'typography'
   const [liked, setLiked] = useState(false)
   const [copied, setCopied] = useState(false)
 
-  const curatedUrl = useMemo(() => getCuratedImage(product, brand), [product, brand])
+  const photoSet = useMemo(() => getCuratedSet(product, brand), [product, brand])
+  const curatedUrl = photoSet[photoIndex % photoSet.length]
 
   const aiUrl = useMemo(() => {
-    const promptText = `${product || brand} high-end commercial product advertisement, modern studio lighting, 4k ultra-realistic`
+    const isFood = `${product} ${brand}`.toLowerCase().match(/(meal|lunch|food|tiffin|fresh|snack|cook)/)
+    const promptText = isFood
+      ? `${product || brand} delicious gourmet fresh healthy lunch box meal prep, colorful fresh vegetables, vibrant restaurant commercial photography, 4k ultra realistic`
+      : `${product || brand} high-end commercial product advertisement, modern studio lighting, 4k ultra-realistic`
     return `https://image.pollinations.ai/prompt/${encodeURIComponent(promptText)}?width=800&height=800&nologo=true&seed=${seed}`
   }, [product, brand, seed])
 
@@ -339,6 +381,15 @@ export default function Preview({ platform, content, brand, product = '', audien
         </div>
 
         <div className="mockup-quick-actions">
+          {visualMode === 'curated' && photoSet.length > 1 && (
+            <button
+              className="action-icon-btn"
+              onClick={() => setPhotoIndex((i) => (i + 1) % photoSet.length)}
+              title="Cycle to next curated photo"
+            >
+              🔄 Next Photo ({((photoIndex % photoSet.length) + 1)}/{photoSet.length})
+            </button>
+          )}
           {visualMode === 'ai' && (
             <button
               className="action-icon-btn"
