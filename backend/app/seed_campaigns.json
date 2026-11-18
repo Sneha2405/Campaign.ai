@@ -1,0 +1,202 @@
+[
+  {
+    "id": "a2b0d92925",
+    "created_at": "2026-11-16T11:16:50.070842Z",
+    "updated_at": "2026-11-16T18:11:01.810576+00:00",
+    "status": "strategy_ready",
+    "input": {
+      "name": "Chai Corner Launch",
+      "product": "New tea cafe near college",
+      "objective": "Get more students to visit",
+      "audience": "College students",
+      "tone": "friendly",
+      "platforms": [
+        "instagram",
+        "linkedin"
+      ],
+      "description": "Cheap, fresh chai and snacks with free Wi-Fi"
+    },
+    "strategy": {
+      "campaign_goal": "Maximize initial foot traffic and encourage repeat visits from college students to Chai Corner.",
+      "core_message": "Your go-to spot for affordable, fresh chai, tasty snacks, and free Wi-Fi \u2013 perfect for study breaks or chill sessions.",
+      "content_pillars": [
+        "Affordable Student Fuel & Snacks",
+        "Your Study & Chill Hub",
+        "Community & Good Vibes"
+      ],
+      "messaging_approach": "Friendly, informal, and benefit-driven, using relatable student language and humor to highlight value, convenience, and a welcoming atmosphere.",
+      "call_to_action": "Visit Chai Corner today for your next study break, chai fix, or chill session!",
+      "campaign_direction": "Your Campus Recharge: Affordable Chai, Free Wi-Fi, and Good Vibes.",
+      "source": "gemini"
+    },
+    "content": {
+      "instagram": {
+        "platform": "instagram",
+        "headline": "",
+        "body": "Stuck in a study rut? \ud83d\ude29 Or just need a place to escape campus chaos? Good news! Your new favorite spot, Chai Corner, is officially OPEN right near campus! \ud83e\udd73 We've got the freshest, most budget-friendly chai and snacks to fuel your brain (and your wallet). Plus, seriously reliable FREE Wi-Fi for all those deadlines or endless scrolling sessions. \ud83d\udcbb\u2728 Whether you're crushing assignments, chilling with your squad, or just need a delicious pick-me-up, we've got your back. Think cozy vibes, great tunes, and zero judgment. Your ultimate campus hub is here!",
+        "hashtags": [
+          "#ChaiCorner",
+          "#CampusLife",
+          "#StudentDeals",
+          "#FreeWiFi",
+          "#StudySpot"
+        ],
+        "call_to_action": "Visit Chai Corner today for your affordable chai fix, delicious snacks, and free Wi-Fi!",
+        "status": "published",
+        "edited": false,
+        "published_at": "2026-11-16T11:17:26.333409Z",
+        "source": "gemini"
+      },
+      "linkedin": {
+        "platform": "linkedin",
+        "headline": "Introducing Your New Campus Hub: Chai Corner",
+        "body": "Juggling studies, social life, and a budget can be challenging for college students. That's why Chai Corner is opening its doors right near campus, designed with your needs in mind.\n\nDiscover a new local spot offering freshly brewed chai and delicious snacks, all at student-friendly prices. Plus, with complimentary reliable Wi-Fi, it's an ideal environment whether you're powering through assignments or simply unwinding between classes.\n\nChai Corner aims to be more than just a cafe; it's your new campus hub \u2013 perfect for focused study sessions, casual meet-ups, or simply enjoying a refreshing break.",
+        "hashtags": [
+          "#ChaiCorner",
+          "#CampusLife",
+          "#StudentCafe"
+        ],
+        "call_to_action": "Visit Chai Corner today for your affordable chai fix, delicious snacks, and free Wi-Fi!",
+        "status": "published",
+        "edited": false,
+        "published_at": "2026-11-16T11:17:26.333409Z",
+        "source": "gemini"
+      }
+    }
+  },
+  {
+    "id": "dc779f9c",
+    "created_at": "2026-11-16T17:30:34.614803+00:00",
+    "updated_at": "2026-11-16T17:31:24.412949+00:00",
+    "status": "content_ready",
+    "input": {
+      "name": "FitLife Launch",
+      "product": "Fitness application",
+      "objective": "Increase downloads",
+      "audience": "College students",
+      "tone": "Energetic and friendly",
+      "platforms": [
+        "instagram",
+        "linkedin"
+      ],
+      "description": "An app for easy daily workouts"
+    },
+    "strategy": {
+      "campaign_goal": "Achieve a significant increase in FitLife app downloads among college students.",
+      "core_message": "FitLife: Your easy daily workout buddy, designed to fit seamlessly into your busy college life.",
+      "content_pillars": [
+        "Quick & Convenient Workouts: Fit fitness into any study break or between classes.",
+        "Energy & Focus Boost: Improve academic performance and daily vitality.",
+        "Stress-Busting & Mood-Lifting: Combat college pressures with feel-good movement."
+      ],
+      "messaging_approach": "Relatable, informal, and encouraging, using language that resonates with student life challenges and aspirations, while maintaining an energetic and friendly tone.",
+      "call_to_action": "Download FitLife Today!",
+      "campaign_direction": "FitLife: Your Campus Power-Up.",
+      "source": "gemini"
+    },
+    "content": {
+      "instagram": {
+        "platform": "instagram",
+        "headline": "",
+        "body": "Juggling lectures, late-night study sessions, and a social life? We get it \u2013 finding time for fitness can feel impossible! \ud83d\udcda\ud83e\udd2f\n\nBut what if staying active was actually *easy* and *fun*? \u2728 Say hello to FitLife, your ultimate college workout buddy!\n\nWe've packed quick, effective workouts into an app designed to fit seamlessly into YOUR busy schedule. Think 15-minute power sessions you can do right in your dorm room or between classes. No gym required, no complex routines \u2013 just pure energy boosts to keep you feeling amazing and focused! \ud83d\udcaa\n\nReady to crush your fitness goals without sacrificing your grades or social life? Let's make wellness a no-brainer! \ud83d\udc47",
+        "hashtags": [
+          "#CollegeFitness",
+          "#StudentLife",
+          "#FitLifeApp",
+          "#WorkoutBuddy",
+          "#CampusFit",
+          "#NoExcuses"
+        ],
+        "call_to_action": "Download FitLife Today!",
+        "status": "approved",
+        "edited": false,
+        "published_at": null,
+        "source": "gemini"
+      },
+      "linkedin": {
+        "platform": "linkedin",
+        "headline": "",
+        "body": "College life is a whirlwind of lectures, late-night study sessions, and exciting new experiences. While you're busy building your future, it's easy for personal well-being to slip down the priority list. But what if staying active could actually *boost* your academic performance and energy levels?\n\nWe get it \u2013 time is precious. That's why FitLife was created: your ultimate, easy daily workout buddy, engineered to fit seamlessly into even the busiest college schedule. Think quick, effective workouts you can do anywhere, anytime, without disrupting your flow.\n\nInvesting in your health now isn't just about looking good; it's about sharpening your focus, reducing stress, and fueling the mental and physical stamina needed to excel in your studies and future career. Make well-being a strategic advantage, not another chore.",
+        "hashtags": [
+          "#StudentLife",
+          "#CollegeFitness",
+          "#WellnessTech",
+          "#Productivity",
+          "#FutureLeaders"
+        ],
+        "call_to_action": "Download FitLife Today!",
+        "status": "approved",
+        "edited": false,
+        "published_at": null,
+        "source": "gemini"
+      }
+    }
+  },
+  {
+    "id": "0cf178e6",
+    "created_at": "2026-11-17T12:59:22.158320+00:00",
+    "updated_at": "2026-11-17T13:01:31.776842+00:00",
+    "status": "published",
+    "input": {
+      "name": "FreshDaily Meals",
+      "product": "Healthy home-cooked lunch boxes delivered daily",
+      "objective": "Get 50 daily lunch orders",
+      "audience": "Office workers and students",
+      "tone": "Energetic and friendly",
+      "platforms": [
+        "instagram",
+        "facebook"
+      ],
+      "description": "Free delivery on your first order with code FRESH"
+    },
+    "strategy": {
+      "campaign_goal": "Secure 50 daily lunch orders by converting busy office workers and students to our healthy meal delivery service.",
+      "core_message": "Enjoy delicious, home-cooked healthy lunches delivered right to your desk or dorm with zero hassle.",
+      "content_pillars": [
+        "Behind-the-scenes meal prep and fresh ingredient sourcing",
+        "Customer testimonials and office/student lifestyle convenience",
+        "Nutritional breakdown and energy-boosting benefits"
+      ],
+      "messaging_approach": "Energetic, friendly, and relatable, focusing on saving time while eating healthier without sacrificing flavor.",
+      "call_to_action": "Order your first lunch today and get free delivery using code FRESH.",
+      "campaign_direction": "High-energy visual storytelling highlighting the contrast between boring desk sandwiches and vibrant, fresh home-cooked meals.",
+      "source": "gemini"
+    },
+    "content": {
+      "instagram": {
+        "platform": "instagram",
+        "headline": "Say goodbye to boring desk lunches! \ud83e\udd57\u2728",
+        "body": "Stuck at your desk or drowning in study sessions? We\u2019ve got your back! Say goodbye to sad sandwiches and heavy takeout, and hello to delicious, home-cooked healthy lunches delivered straight to your desk or dorm with zero hassle.\n\nFuel your day the right way with meals that taste like home and love your body back. \n\nReady to upgrade your lunch break? Order your first lunch today and get free delivery using code FRESH.",
+        "hashtags": [
+          "#HealthyLunch",
+          "#LunchDelivery",
+          "#OfficeFuel",
+          "#StudentMeals",
+          "#EatFresh"
+        ],
+        "call_to_action": "Order your first lunch today and get free delivery using code FRESH.",
+        "status": "published",
+        "edited": false,
+        "published_at": "2026-11-17T13:01:25.916793+00:00",
+        "source": "gemini"
+      },
+      "facebook": {
+        "platform": "facebook",
+        "headline": "Say goodbye to sad desk lunches and boring cafeteria food! \ud83e\udd57",
+        "body": "Hey everyone! We know how crazy busy work and classes can get. Between meetings, lectures, and endless deadlines, who has the time to meal prep? \n\nThat's where we come in! Imagine opening a delicious, piping-hot, home-cooked healthy lunch delivered straight to your office desk or dorm room door with zero hassle.\n\nFuel your day the tasty way without lifting a finger. Tap the link below to check out this week's menu and treat yourself to a wholesome meal today!",
+        "hashtags": [
+          "#HealthyLunch",
+          "#LunchDelivery",
+          "#OfficeMeals",
+          "#StudentFuel",
+          "#HomeCooked"
+        ],
+        "call_to_action": "Order your first lunch today and get free delivery using code FRESH.",
+        "status": "published",
+        "edited": false,
+        "published_at": "2026-11-17T13:01:31.776802+00:00",
+        "source": "gemini"
+      }
+    }
+  }
+]

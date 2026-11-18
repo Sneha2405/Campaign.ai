@@ -140,7 +140,9 @@ class SQLiteStore:
                     (aid, plat, handle, now),
                 )
             conn.commit()
-        conn.close()
+        self._seed_default_campaigns(conn)
+        if self._shared_mem is None:
+            conn.close()
 
     def clear(self) -> None:
         """Clears all table contents (used in test fixtures)."""
@@ -172,6 +174,33 @@ class SQLiteStore:
                     "INSERT INTO social_accounts VALUES (?, ?, ?, '{}', 1, ?)",
                     (aid, plat, handle, now),
                 )
+
+    def _seed_default_campaigns(self, conn: sqlite3.Connection) -> None:
+        try:
+            cur = conn.execute("SELECT COUNT(*) AS c FROM campaigns")
+            if cur.fetchone()["c"] == 0:
+                seed_c_file = Path(__file__).resolve().parent / "seed_campaigns.json"
+                if seed_c_file.exists():
+                    with open(seed_c_file, "r", encoding="utf-8") as f:
+                        c_list = json.load(f)
+                    for c in c_list:
+                        conn.execute(
+                            "INSERT OR IGNORE INTO campaigns (id, created_at, data) VALUES (?, ?, ?)",
+                            (c["id"], c.get("created_at", datetime.now(timezone.utc).isoformat()), json.dumps(c)),
+                        )
+
+                seed_m_file = Path(__file__).resolve().parent / "seed_metrics.json"
+                if seed_m_file.exists():
+                    with open(seed_m_file, "r", encoding="utf-8") as f:
+                        m_list = json.load(f)
+                    for m in m_list:
+                        conn.execute(
+                            "INSERT INTO metrics (campaign_id, platform, day, impressions, clicks, engagements, conversions) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                            (m["campaign_id"], m["platform"], m["day"], m["impressions"], m["clicks"], m["engagements"], m["conversions"]),
+                        )
+                conn.commit()
+        except Exception as e:
+            print("Notice: Campaign auto-seed skipped:", e)
 
     # ── Core Campaign CRUD ──────────────────────────────────────────
     def create(self, inp: CampaignCreate) -> Campaign:
