@@ -271,7 +271,7 @@ export default function Workspace({ notify, health }) {
 
               <div className="prev-col">
                 <small className="label">Live preview · {PLAT_LABEL[tab]}</small>
-                <Preview platform={tab} content={cur} brand={input.name} />
+                <Preview platform={tab} content={cur} brand={input.name} product={input.product} audience={input.audience} />
                 {locked && cur.published_at && <p className="muted small-text">Published {new Date(cur.published_at).toLocaleString()} (simulated)</p>}
               </div>
             </div>

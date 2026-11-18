@@ -224,27 +224,106 @@ p { margin: 0 0 1em; }
 .publish-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 24px; border-top: 1px solid var(--line); background: var(--paper-2); flex-wrap: wrap; }
 .publish-bar small { display: block; color: var(--ink-2); font-size: .78rem; }
 
-/* ---------- platform previews */
-.phone, .post { width: 100%; max-width: 360px; background: #fff; border: 1px solid #ddd; border-radius: 16px; overflow: hidden; font-size: .88rem; }
-.post { padding: 14px 16px; }
+/* ---------- platform previews & ad mockup engine */
+.preview-engine-wrapper { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 12px; }
+.mockup-toolbar { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+.mockup-modes { display: flex; gap: 6px; justify-content: space-between; }
+.pill-btn { font-size: .72rem; padding: 4px 8px; border-radius: 99px; border: 1px solid var(--line); background: transparent; cursor: pointer; transition: all .2s; font-weight: 500; }
+.pill-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.mockup-quick-actions { display: flex; gap: 8px; justify-content: flex-end; align-items: center; }
+.action-icon-btn { font-size: .72rem; font-family: var(--mono); padding: 4px 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--paper-2); cursor: pointer; text-decoration: none; color: var(--ink); transition: background .15s; }
+.action-icon-btn:hover { background: #e5e5e5; }
+.action-icon-btn.copy-btn { font-weight: 600; }
+.mockup-stage { width: 100%; display: flex; justify-content: center; }
+
+.phone, .post { width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 16px; overflow: hidden; font-size: .88rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
 .ph-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
-.post .ph-head { padding: 0 0 10px; }
-.ph-head small { display: block; color: #777; font-size: .72rem; }
-.ph-head > span { margin-left: auto; color: #888; }
+.avatar-ring { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(45deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 2px; display: grid; place-items: center; flex: none; }
+.avatar-ring .avatar { width: 100%; height: 100%; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; font-weight: 700; font-size: .85rem; }
 .avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #e8a23a); color: #fff; display: grid; place-items: center; font-weight: 700; flex: none; }
-.ig-img { aspect-ratio: 1; background: radial-gradient(circle at 30% 20%, #ffd89b, #e2573a 50%, #6a2c70); display: grid; place-items: center; padding: 24px; text-align: center; color: #fff; font: 600 1.7rem var(--serif); text-shadow: 0 2px 8px rgba(0,0,0,.3); }
-.ig-actions { padding: 10px 14px 0; font-size: 1.15rem; letter-spacing: 8px; display: flex; }
-.ig-actions span { margin-left: auto; }
-.phone .cap, .phone .tags, .phone .cta-line { padding: 4px 14px; margin: 0; white-space: pre-line; }
-.phone .tags { color: #1f5fae; padding-bottom: 14px; }
-.cta-line { font-weight: 600; margin: 6px 0 0; }
-.post h5 { font-size: 1.05rem; margin-bottom: 6px; }
-.li-body { white-space: pre-line; margin: 0 0 8px; }
-.tags { color: #1f5fae; margin: 0 0 6px; word-break: break-word; }
-.li-actions { display: flex; justify-content: space-around; border-top: 1px solid #eee; margin-top: 10px; padding-top: 10px; color: #666; font-size: .8rem; }
-.post.li { border-top: 4px solid #0a66c2; }
-.post.tw { border-radius: 20px; }
-.post.fb { border-top: 4px solid #1877f2; }
+
+/* IG Ad Card */
+.ig-ad-card { border: 1px solid #e1e1e1; }
+.ig-user-info { display: flex; flex-direction: column; line-height: 1.2; }
+.ig-user-row { display: flex; align-items: center; gap: 5px; }
+.ig-dot { color: #888; font-size: .7rem; }
+.ig-follow { color: #0095f6; font-size: .75rem; font-weight: 600; cursor: pointer; }
+.ig-sponsored { font-size: .7rem; color: #888; }
+.ig-more { margin-left: auto; color: #262626; font-weight: bold; cursor: pointer; }
+.ad-visual-wrap { position: relative; width: 100%; overflow: hidden; background: #111; }
+.ad-creative-img { width: 100%; display: block; object-fit: cover; }
+.ig-ratio { aspect-ratio: 1 / 1; }
+.li-ratio, .tw-ratio, .fb-ratio { aspect-ratio: 1.91 / 1; }
+.typo-creative { background: radial-gradient(circle at 30% 20%, #ff7e5f, #feb47b 50%, #2f0743); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px; text-align: center; color: #fff; }
+.typo-creative h4 { font-size: 1.35rem; font-family: var(--serif); line-height: 1.25; margin: 8px 0; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.creative-brand { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; opacity: .85; }
+.creative-tag { background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); padding: 4px 14px; border-radius: 99px; font-size: .75rem; font-weight: 600; }
+.ig-cta-strip { background: #0095f6; color: #fff; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: .84rem; cursor: pointer; }
+.ig-actions-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px 4px; }
+.ig-left-actions { display: flex; gap: 14px; align-items: center; }
+.ig-icon-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; padding: 0; transition: transform .15s; }
+.ig-icon-btn:hover { transform: scale(1.15); }
+.ig-icon { font-size: 1.15rem; cursor: pointer; }
+.ig-social-proof { padding: 4px 14px; font-size: .82rem; }
+.ig-caption-block { padding: 4px 14px; font-size: .86rem; }
+.ig-caption-block .cap { margin: 0 0 4px; line-height: 1.35; }
+.ig-caption-block .tags { color: #00376b; margin: 0; font-size: .82rem; }
+.ig-footer-meta { padding: 8px 14px 14px; display: flex; flex-direction: column; gap: 4px; }
+.ig-time { font-size: .65rem; color: #8e8e8e; letter-spacing: .04em; }
+
+/* LinkedIn Card */
+.li-ad-card { padding: 14px; border-top: 4px solid #0a66c2; }
+.li-head { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.li-logo { width: 38px; height: 38px; border-radius: 6px; background: #0a66c2; color: #fff; display: grid; place-items: center; font-weight: bold; font-size: .95rem; flex: none; }
+.li-info { display: flex; flex-direction: column; line-height: 1.2; }
+.li-title-row { display: flex; align-items: center; gap: 6px; }
+.li-dot { color: #888; font-size: .7rem; }
+.li-follow { color: #0a66c2; font-weight: 600; font-size: .78rem; cursor: pointer; }
+.li-more { margin-left: auto; color: #666; cursor: pointer; }
+.li-body { white-space: pre-line; margin: 0 0 8px; line-height: 1.35; font-size: .88rem; }
+.li-media-card { border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; margin: 10px 0; background: #f3f6f8; }
+.li-card-bottom { padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.li-card-texts { display: flex; flex-direction: column; }
+.li-card-domain { font-size: .65rem; color: #666; font-family: var(--mono); }
+.li-card-headline { margin: 2px 0 0; font-size: .88rem; font-weight: 600; line-height: 1.2; }
+.li-cta-btn { background: transparent; border: 1.5px solid #0a66c2; color: #0a66c2; font-weight: 600; border-radius: 99px; padding: 4px 12px; cursor: pointer; }
+.li-reactions-row { display: flex; justify-content: space-between; font-size: .76rem; padding: 6px 0; border-bottom: 1px solid #ebebeb; margin-bottom: 6px; }
+.li-actions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.li-act-btn { background: none; border: none; padding: 6px 2px; font-size: .78rem; color: #666; border-radius: 6px; cursor: pointer; font-weight: 600; }
+.li-act-btn:hover { background: #f3f6f8; }
+.li-act-btn.active { color: #0a66c2; }
+
+/* Twitter / X Card */
+.tw-ad-card { padding: 14px; border-radius: 16px; border: 1px solid #cfd9de; }
+.tw-header { display: flex; gap: 10px; align-items: flex-start; }
+.tw-user-meta { display: flex; flex-direction: column; }
+.tw-names { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.tw-promoted-pill { color: #536471; font-size: .68rem; margin-top: 1px; }
+.tw-body-text { margin: 10px 0 8px; line-height: 1.4; font-size: .9rem; white-space: pre-line; }
+.tw-media-box { border: 1px solid #cfd9de; border-radius: 12px; overflow: hidden; margin: 10px 0; }
+.tw-media-foot { padding: 8px 12px; background: #f7f9f9; border-top: 1px solid #cfd9de; display: flex; flex-direction: column; }
+.tw-metrics-row { display: flex; justify-content: space-between; color: #536471; font-size: .8rem; margin-top: 10px; align-items: center; }
+.tw-stat { cursor: pointer; }
+.tw-like-btn { background: none; border: none; cursor: pointer; color: inherit; font-size: inherit; display: flex; align-items: center; gap: 4px; }
+.tw-like-btn.liked { color: #f91880; }
+
+/* Facebook Card */
+.fb-ad-card { padding: 14px; border-top: 4px solid #1877f2; }
+.fb-head { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.fb-sponsored-row { color: #65676b; font-size: .72rem; display: block; }
+.fb-more { margin-left: auto; color: #65676b; cursor: pointer; }
+.fb-body { margin: 0 0 10px; font-size: .88rem; line-height: 1.35; white-space: pre-line; }
+.fb-media-card { border: 1px solid #dddfe2; border-radius: 6px; overflow: hidden; margin-bottom: 8px; }
+.fb-link-bar { padding: 10px 12px; background: #f0f2f5; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.fb-link-info { display: flex; flex-direction: column; }
+.fb-domain { font-size: .65rem; color: #65676b; font-family: var(--mono); }
+.fb-headline { font-size: .88rem; font-weight: 700; margin: 2px 0 0; }
+.fb-cta-btn { background: #e4e6eb; color: #050505; border: none; font-weight: 600; border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+.fb-reactions-bar { display: flex; justify-content: space-between; font-size: .78rem; color: #65676b; padding: 6px 0; border-bottom: 1px solid #e4e6eb; }
+.fb-actions-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 4px; }
+.fb-act-btn { background: none; border: none; padding: 8px; font-size: .8rem; font-weight: 600; color: #65676b; border-radius: 6px; cursor: pointer; }
+.fb-act-btn:hover { background: #f0f2f5; }
+.fb-act-btn.active { color: #1877f2; }
 
 /* ---------- footer + toast */
 .footer { margin-top: 40px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; padding: 44px clamp(16px, 5vw, 64px); border-top: 1px solid var(--ink); background: var(--paper-2); font-size: .9rem; color: var(--ink-2); }
