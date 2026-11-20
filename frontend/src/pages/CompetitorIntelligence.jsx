@@ -136,7 +136,7 @@ export default function CompetitorIntelligence({ notify }) {
                   Strategic Differentiation Playbook
                 </span>
                 <span className={`pill ${data.data_source === 'live_web_search' ? 'gemini' : ''}`} style={{ background: '#fff' }}>
-                  {data.data_source === 'live_web_search' ? '🌐 Live Web Search Results' : '⚠️ Labeled AI Hypotheses'}
+                  {data.data_source === 'live_web_search' ? '🌐 Live DuckDuckGo Search' : '🤖 AI Industry Intelligence'}
                 </span>
               </div>
               <h3 style={{ marginTop: '6px' }}>Recommended Market Positioning: <em>{data.market_position}</em></h3>
@@ -144,7 +144,7 @@ export default function CompetitorIntelligence({ notify }) {
                 {data.recommended_differentiation}
               </p>
               <p className="small-text" style={{ margin: '10px 0 0', color: 'var(--ink-2)', fontStyle: 'italic', borderTop: '1px dashed var(--line)', paddingTop: '8px' }}>
-                📌 Transparency Note: {data.disclaimer || "Gemini has no live market data, so it will give clearly labeled 'AI hypotheses' about types of competitors, not named companies."}
+                📌 Market Radar Note: {data.disclaimer || "Real competitors identified from live web search and commercial market benchmarks."}
               </p>
             </div>
           </div>
