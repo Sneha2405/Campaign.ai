@@ -490,6 +490,14 @@ async def compliance_audit_endpoint(cid: str):
     if not c:
         raise HTTPException(404, "Campaign not found")
     content_dict = {p: item.model_dump() for p, item in c.content.items()}
+    if not content_dict:
+        content_dict = {
+            "campaign_name": c.input.name,
+            "product": c.input.product,
+            "audience": c.input.audience,
+            "description": c.input.description,
+            "strategy": c.strategy.model_dump() if c.strategy else {},
+        }
     return run_compliance_agent(content_dict)
 
 
